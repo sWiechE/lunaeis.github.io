@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#141119">
+  <title>Lunaeis — мои ссылки</title>
+  <style>
+    * { box-sizing: border-box }
+    body { margin: 0; min-height: 100svh; display: grid; place-items: center; background: #141119; color: #f8f1fa; font: 1rem/1.45 Inter, system-ui, sans-serif }
+    main { width: min(100%, 38rem); padding: 2.5rem 1.25rem }
+    header { background: radial-gradient(ellipse at 80% 15%, #dfabff, transparent 55%), linear-gradient(125deg,#ac8bed,#c5a6f3 60%,#a989d5); isolation: isolate; color: #261830; border-radius: 1.5rem; padding: 2rem; min-height: 12.75rem; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: end }
+    header::before { content: ""; position: absolute; z-index: -1; width: 8rem; height: 8rem; border-radius: 50%; right: 1.7rem; top: -1.8rem; background: radial-gradient(circle at 28% 20%, #fbeaff 2%, #c9a9ed 28%, #8363a6 63%, #4a355e 91%); box-shadow: inset -4px -5px 14px #46345266 }
+    header::after { content: ""; position: absolute; z-index: -1; border: 2px solid #fbebffb3; border-top-color: transparent; border-radius: 50%; width: 15rem; height: 3.5rem; right: -2rem; top: .6rem; transform: rotate(-27deg) }
+    h1 { margin: 0; font: italic 500 clamp(3.8rem,14vw,6rem)/1 Georgia,serif; letter-spacing: -.075em }
+    p { margin: .5rem 0 0 }
+    nav { display: grid; gap: .625rem; margin-top: 1rem }
+    .row { display: flex; align-items: center; gap: 1rem; background: #201c25; color: inherit; border: 1px solid #38303e; border-radius: 1rem; padding: .85rem 1.1rem; text-decoration: none; width: 100%; text-align: left; font: inherit; cursor: pointer }
+    .row:hover, .row:focus-visible { border-color: #bf9fd6; background: #2a2330 }
+    .row:focus-visible { outline: 2px solid #dfbeef; outline-offset: 2px }
+    i { width: 2.65rem; height: 2.65rem; display: grid; place-items: center; background: var(--tint); color: var(--ink); border-radius: .8rem; flex: none }
+    svg { width: 1.55rem; height: 1.55rem; fill: currentColor }
+    strong,small { display: block }
+    strong { font-weight: 620 }
+    small, .action { color: #bfb4c6; font-size: .875rem }
+    .action { margin-left: auto }
+    @media(max-width: 32rem) { main { padding: 1.25rem 1rem } header { padding: 1.5rem } }
+  </style>
+</head>
+<body>
+<main>
+  <header><h1>Lunaeis</h1><p>Игры и соцсети</p></header>
+  <nav aria-label="Мои профили">
+    <a class="row" href="https://steamcommunity.com/id/Lunaeis/"><i style="--tint:#283744;--ink:#afd7ef" aria-hidden="true"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><circle cx="16.5" cy="7.5" r="4.5"/><circle cx="16.5" cy="7.5" r="2"/><circle cx="8" cy="16" r="3.5"/><path d="m1 13 7 3m1-4 4-5m-2 10 6-5"/></g></svg></i><span><strong>Steam</strong><small>Lunaeis</small></span></a>
+    <a class="row" href="https://www.faceit.com/ru/players/Lunaeis"><i style="--tint:#412e25;--ink:#ffa16a" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M1 12h14l6-7 1 14z"/></svg></i><span><strong>FACEIT</strong><small>Lunaeis</small></span></a>
+    <a class="row" href="https://t.me/lunaeis"><i style="--tint:#213942;--ink:#88d8f0" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 11 21 3q2-1 1 2l-3 15q-.3 2-2 1l-6-4 7-9-10 8-5-2q-3-1-1-3z"/></svg></i><span><strong>Telegram</strong><small>@lunaeis</small></span></a>
+    <button type="button" class="row" id="discord" aria-label="Скопировать ник Discord lunaeis"><i style="--tint:#332e4d;--ink:#c0b2ff" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill-rule="evenodd" d="M5 5 9 4l1 2h4l1-2 4 1q3 4 4 12l-5 3-2-2q-4 1-8 0l-2 2-5-3Q2 10 5 5Zm3.5 5.5a1.7 2 0 1 0 .01 0Zm7 0a1.7 2 0 1 0 .01 0Z"/></svg></i><span><strong>Discord</strong><small>lunaeis</small></span><span class="action" aria-live="polite">Скопировать</span></button>
+    <a class="row" href="https://www.instagram.com/swiechee/"><i style="--tint:#412d39;--ink:#f4b5d7" aria-hidden="true"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></g><circle cx="17.5" cy="6.8" r="1.2"/></svg></i><span><strong>Instagram</strong><small>@swiechee</small></span></a>
+  </nav>
+</main>
+<script>
+  const discord = document.querySelector('#discord');
+  const statusText = discord.querySelector('.action');
+  let resetTimer;
+  discord.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText('lunaeis');
+      statusText.textContent = 'Скопировано ✓';
+      clearTimeout(resetTimer);
+      resetTimer = setTimeout(() => statusText.textContent = 'Скопировать', 2500);
+    } catch {
+      window.prompt('Скопируй ник для Discord', 'lunaeis');
+    }
+  });
+</script>
+</body>
+</html>
